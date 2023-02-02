@@ -5,7 +5,7 @@ const User = db.user;
 var jwt = require("jsonwebtoken");
 var bcrypt = require("bcryptjs");
 
-exports.signup = (req, res) => {
+signup = (req, res) => {
   const user = new User({
     username: req.body.username,
     email: req.body.email,
@@ -20,7 +20,7 @@ exports.signup = (req, res) => {
   });
 };
 
-exports.signin = (req, res) => {
+signin = (req, res) => {
   User.findOne({
     username: req.body.username,
   }).exec((err, user) => {
@@ -56,7 +56,7 @@ exports.signin = (req, res) => {
     });
 };
 
-exports.signout = async (req, res) => {
+signout = async (req, res) => {
   try {
     req.session = null;
     return res.status(200).send({ message: "You've been signed out!" });
@@ -64,3 +64,11 @@ exports.signout = async (req, res) => {
     this.next(err);
   }
 };
+
+const authController = {
+    signin,
+    signup,
+    signout
+}
+
+module.exports = authController;

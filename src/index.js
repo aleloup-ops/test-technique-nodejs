@@ -1,21 +1,21 @@
+const dotenv = require("dotenv");
 const express = require("express");
 const cors = require("cors");
 const cookieSession = require("cookie-session");
-
-const dotenv = require("dotenv");
 
 const appRoutes = require('./routes');
 
 const dbConfig = require("./config/db.config");
 const db = require("./models");
 
-dotenv.config();
 
 const app = express();
 
 var corsOptions = {
   origin: "http://localhost:8081"
 };
+
+dotenv.config();
 
 app.use(cors(corsOptions));
 
@@ -39,14 +39,13 @@ db.mongoose
     process.exit();
   });
 
-
-/*app.use(
+app.use(
   cookieSession({
     name: "node-test-session",
-    secret: process.env.COOKIE_SECRET, // should use as secret environment variable
+    secret:  process.env.COOKIE_SECRET, // should use as secret environment variable
     httpOnly: true
   })
-);*/
+);
 
 app.use('/', appRoutes);
 

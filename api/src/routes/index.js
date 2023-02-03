@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 const userRoutes = require("./user");
-const objectRoutes = require("./object");
+const bookRoutes = require("./book");
 
 router.use(function(req, res, next) {
     res.header(
@@ -14,5 +14,5 @@ router.use(function(req, res, next) {
 
 // Use your user routes
 router.use("/user", userRoutes);
-router.use("/object", objectRoutes);
+router.use("/books", bookRoutes);
 module.exports = router;

@@ -26,13 +26,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 db.mongoose
-  .connect(`mongodb://${dbConfig.HOST}:${dbConfig.PORT}/${dbConfig.DB}`, {
+  .connect(process.env.MONGO_CONNSTRING, {
     useNewUrlParser: true,
     useUnifiedTopology: true
   })
   .then(() => {
+    console.log(process.env.JWT_SECRET);
     console.log("Successfully connect to MongoDB.");
-    initial();
   })
   .catch(err => {
     console.error("Connection error", err);
@@ -47,7 +47,7 @@ app.use(
   })
 );
 
-app.use('/', appRoutes);
+app.use('/api', appRoutes);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;

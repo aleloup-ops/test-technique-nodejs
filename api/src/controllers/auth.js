@@ -17,6 +17,7 @@ signup = (req, res) => {
       return;
     }
   });
+  return res.status(200).send({ message: "User was registered successfully!" });
 };
 
 signin = (req, res) => {

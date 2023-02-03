@@ -74,6 +74,9 @@
             >pages/index.vue</code
           >. Have fun!
         </p>
+        <h1 class=" font-bold underline">
+    Hello world!
+  </h1>
       </div>
       <div class="flex justify-center pt-4 space-x-2">
         <a href="https://github.com/nuxt/nuxt.js" target="_blank"

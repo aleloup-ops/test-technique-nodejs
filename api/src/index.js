@@ -11,15 +11,12 @@ const db = require("./models");
 
 const app = express();
 
-var corsOptions = {
-  origin: "http://localhost:8081"
-};
-
 dotenv.config();
 
-app.use(cors(corsOptions));
-
-// parse requests of content-type - application/json
+app.use(cors({
+  origin: 'http://localhost:3000',
+  credentials: true
+}))// parse requests of content-type - application/json
 app.use(express.json());
 
 // parse requests of content-type - application/x-www-form-urlencoded
@@ -31,7 +28,6 @@ db.mongoose
     useUnifiedTopology: true
   })
   .then(() => {
-    console.log(process.env.JWT_SECRET);
     console.log("Successfully connect to MongoDB.");
   })
   .catch(err => {
@@ -41,9 +37,8 @@ db.mongoose
 
 app.use(
   cookieSession({
-    name: "node-test-session",
-    secret:  process.env.COOKIE_SECRET, // should use as secret environment variable
-    httpOnly: true
+    name: "session",
+    secret:  "jdklajkd3kal3jdkaljk3ljadklsjdkl23jdk23jdlkajdklj3kl2j3kadlkj3dklj3dklj", // should use as secret environment variable
   })
 );
 

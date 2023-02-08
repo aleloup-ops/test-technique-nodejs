@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    
     "target": "ES2018",
     "module": "ESNext",
     "moduleResolution": "Node",
@@ -10,12 +11,12 @@
     "strict": true,
     "noEmit": true,
     "experimentalDecorators": true,
-    "baseUrl": ".",
+    "baseUrl": "http://localhost:8080/api/",
     "paths": {
       "~/*": ["./*"],
       "@/*": ["./*"]
     },
-    "types": ["@nuxt/types", "@nuxtjs/axios", "@types/node"]
+    "types": ["@nuxt/types", "@nuxtjs/axios", "@types/node","@nuxtjs/auth-next"]
   },
   "exclude": ["node_modules", ".nuxt", "dist"]
 }

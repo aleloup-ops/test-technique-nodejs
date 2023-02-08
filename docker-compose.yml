@@ -1,21 +1,21 @@
 version: "3"
 services:
   
-  # web:
-  #  build:
-  #     context: ./web
-  #  ports:
-  #   -  3000:3000
-  #  container_name: mern-ui
-  #  networks:
-  #   -  mern-stack-net
-  #  volumes:
-  #   -  ./web/src:/usr/app/src
-  #   -  ./web/public:/usr/app/public
-  #  depends_on:
-  #   - api
-  #  stdin_open: true
-  #  tty: true
+  web:
+   build:
+      context: ./web
+   ports:
+    -  3000:3000
+   container_name: mern-ui
+   networks:
+    -  mern-stack-net
+   volumes:
+    -  ./web/src:/usr/app/src
+    -  ./web/public:/usr/app/public
+   depends_on:
+    - api
+   stdin_open: true
+   tty: true
 
   api:
    build:

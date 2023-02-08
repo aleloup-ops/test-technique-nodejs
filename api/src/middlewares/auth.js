@@ -3,7 +3,8 @@ const config = require("../config/auth.config.js");
 const db = require("../models");
 
 verifyToken = (req, res, next) => {
-  let token = req.session.token;
+  console.log(req.body);
+  let token = req.body.token;
 
   if (!token) {
     return res.status(403).send({ message: "No token provided!" });

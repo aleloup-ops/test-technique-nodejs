@@ -13,9 +13,6 @@ RUN npm install
 # Copy the rest of the project files
 COPY . .
 
-# Build the app
-RUN npm run build
-
 # Set the environment variables
 ENV HOST 0.0.0.0
 

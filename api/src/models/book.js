@@ -6,7 +6,8 @@ const Book = mongoose.model(
         title: String,
         description: String,
         published: Boolean,
-        author: String
+        author: String,
+        user_id: String,
     })
 );
 

@@ -42,17 +42,18 @@ signin = (req, res) => {
         return res.status(401).send({ message: "Invalid Password!" });
       }
 
-      console.log(process.env.JWT_SECRET)
       var token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
         expiresIn: 86400, // 24 hours
       });
 
       req.session.token = token;
 
-      res.status(200).send({
+      res.status(200)
+      .send({
         id: user._id,
         username: user.username,
         email: user.email,
+        token: token,
       });
     });
 };

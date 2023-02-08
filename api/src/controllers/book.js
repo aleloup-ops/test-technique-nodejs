@@ -3,8 +3,7 @@ const Book = db.book;
 
 getAllBooks = async (req, res) => {
     try {
-        console.log("books");
-        const books = await Book.find({});
+        const books = await Book.find({user_id: req.params.id});
         return res.status(200).send(books);
     } catch (err) {
         this.next(err);
@@ -25,7 +24,8 @@ insertBook = async (req, res) => {
         title: req.body.title,
         author: req.body.author,
         description: req.body.description,
-        published: req.body.published
+        published: req.body.published,
+        user_id: req.body.user_id
     });
 
     book.save((err, book) => {
@@ -51,9 +51,9 @@ updateBook = async (req, res) => {
         title: req.body.title,
         author: req.body.author,
         description: req.body.description,
-        published: req.body.published
+        published: req.body.published,
+        user_id: req.body.user_id
     });
-
     try {
         const book = await Book.findByIdAndUpdate(req.params.id, req.body);
     } catch (err) {
